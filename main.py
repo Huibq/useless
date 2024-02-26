@@ -29,8 +29,13 @@ try:
     tools.User_4.qqmusic_key = ae(tx.refresh(str(ad(tools.User_4.loginuin, key, iv)), ad(tools.User_4.qqmusic_key, key, iv)), key, iv)
 except Exception as e:
     print(e)
+try:
+    tools.User_5.qqmusic_key = ae(tx.refresh(str(ad(tools.User_5.loginuin, key, iv)), ad(tools.User_5.qqmusic_key, key, iv)), key, iv)
+except Exception as e:
+    print(e)
 with open("./utils/secret.json", "w", encoding='utf-8') as f:
     json.dump(tools, f)
 
 
 # print(ad(tools.User_4.loginuin, key, iv))
+# print(ae('', key, iv))
