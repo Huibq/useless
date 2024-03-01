@@ -37,5 +37,6 @@ with open("./utils/secret.json", "w", encoding='utf-8') as f:
     json.dump(tools, f)
 
 
-# print(ad(tools.User_4.loginuin, key, iv))
+# print(ad(tools.User_1.loginuin, key, iv))
+# print(ad(tools.User_1.qqmusic_key, key, iv))
 # print(ae('', key, iv))
