@@ -27,4 +27,5 @@ with open("./utils/secret.json", "w", encoding='utf-8') as f:
 # print(ad(tools.User_6.loginuin, key, iv))
 # print(ad(tools.User_6.qqmusic_key, key, iv))
 # print(ae('', key, iv))
+# print(ae('', key, iv))
 # print(tx.refresh('', ''))
