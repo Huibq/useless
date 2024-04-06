@@ -1,5 +1,6 @@
 import base64
 import hashlib
+from Crypto.Util.Padding import pad
 from Crypto.Cipher import AES
 
 
@@ -21,6 +22,14 @@ def ae(plain_text, key, iv):
     padded_text = plain_text.encode('utf-8') + bytes([pad_length]) * pad_length
     encrypted_text = aes.encrypt(padded_text)
     return base64.b64encode(encrypted_text).decode()
+
+
+def aes_hex(plain_text):
+    key = b'c24f74ca2820225badc01946dba4fdf7'
+    iv = b'adc01946dba4fdf7'
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    crypto = cipher.encrypt(pad(plain_text.encode(), AES.block_size))
+    return crypto.hex()
 
 
 def sortDict(dictionary):
