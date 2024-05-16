@@ -31,8 +31,8 @@ for u in txt:
 with open("./utils/secret.json", "w", encoding='utf-8') as f:
     json.dump(txt, f)
 
-# print(ad(tools.User_6.loginuin, key, iv))
-# print(ad(tools.User_6.qqmusic_key, key, iv))
+# print(ad(txt['User_4']['loginuin'], key, iv))
+# print(ad(txt['User_4']['qqmusic_key'], key, iv))
 # print(ae('', key, iv))
 # print(ae('', key, iv))
 # print(tx.refresh('', ''))
