@@ -2,7 +2,7 @@ import hashlib
 import json
 import time
 import requests
-from utils.util import aes_hex
+from utils.util import aes_hex, push
 
 
 def refresh_token(user='', token=''):
@@ -31,8 +31,10 @@ def refresh_token(user='', token=''):
         'KG-RC': '1',
     }
     response = requests.post(login_url, params=params, json=data, headers=headers)
-    if response.json()['error_code'] == 0:
-        print('成功')
+    if response.json()['error_code'] != 0:
+        push(user, 'KG刷新失败')
+        return None
+    print('成功')
     return response.json()['data']['token']
 
 

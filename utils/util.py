@@ -2,6 +2,10 @@ import base64
 import hashlib
 from Crypto.Util.Padding import pad
 from Crypto.Cipher import AES
+import requests
+import os
+
+token = os.environ['token']
 
 
 def createMD5(s: str):
@@ -70,6 +74,12 @@ class CreateObject(dict):
 
     def __getattr__(self, UNUSED):
         return None
+
+
+def push(user, title):
+    content = '账号：' + user
+    url = 'http://www.pushplus.plus/send?token=' + token + '&title=' + title + '&content=' + content
+    requests.get(url)
 
 
 if __name__ == '__main__':
