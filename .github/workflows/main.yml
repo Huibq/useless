@@ -35,6 +35,7 @@ jobs:
       env:
         key: ${{secrets.key}}
         iv: ${{secrets.iv}}
+        token: ${{secrets.token}}
       run: |
         python main.py
     - name: Commit
