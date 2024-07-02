@@ -16,7 +16,6 @@ def doJob(user):
         try:
             txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
         except Exception as e:
-            push(str(ad(txt[user]['loginuin'], key, iv)), '企鹅刷新失败')
             print('出错！！')
     else:
         try:
