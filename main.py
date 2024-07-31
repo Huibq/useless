@@ -21,7 +21,6 @@ def doJob(user):
         try:
             txt[user]['qqmusic_key'] = ae(kg.refresh_token(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
         except Exception as e:
-            push(str(ad(txt[user]['loginuin'], key, iv)), 'KG刷新失败')
             print('出错！！')
 
 
