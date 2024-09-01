@@ -3,7 +3,7 @@ from utils.util import push
 
 
 def refresh(loginuin, qqmusic_key):
-    if loginuin.startswith('W_X'):
+    if qqmusic_key.startswith('W_X'):
         options = {
             'method': 'POST',
             'body': {
