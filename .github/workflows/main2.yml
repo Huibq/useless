@@ -1,4 +1,4 @@
-name: refresh
+name: refresh2
 
 on:
   workflow_dispatch:
