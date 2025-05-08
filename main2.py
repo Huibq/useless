@@ -1,5 +1,7 @@
 import json
 import os
+import traceback
+
 from utils.util import ae, ad
 from modules import tx
 
@@ -14,6 +16,7 @@ def doJob(user):
     try:
         txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
     except Exception as e:
+        traceback.print_exc()
         print(f'{user}：出错！！')
 
 
