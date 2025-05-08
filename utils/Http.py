@@ -3,8 +3,6 @@ import requests
 from modules.qqsign import sign
 
 socks = os.environ['socks']
-print(type(socks))
-print(socks)
 proxies = {
     'http': socks,
     'https': socks
