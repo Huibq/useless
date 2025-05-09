@@ -36,7 +36,6 @@ jobs:
         key: ${{secrets.key}}
         iv: ${{secrets.iv}}
         token: ${{secrets.token}}
-        socks: ${{secrets.socks}}
       run: |
         python main.py
         python main2.py
