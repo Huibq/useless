@@ -1,7 +1,6 @@
-import json
+import json, time
 import os
 import traceback
-
 from utils.util import ae, ad
 from modules import tx
 
@@ -22,6 +21,7 @@ def doJob(user):
 
 for u in txt:
     doJob(u)
+    time.sleep(0.5)
 
 with open("./utils/secret2.json", "w", encoding='utf-8') as f:
     json.dump(txt, f)
