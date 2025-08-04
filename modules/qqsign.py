@@ -1,5 +1,15 @@
 import re as _re
-from utils.util import createMD5
+from hashlib import md5, sha1
+import base64
+from Crypto.Cipher import AES
+
+zzc_headMap = [23, 14, 6, 36, 16, 7, 19]
+zzc_middleMap = [89,  39, 179, 150, 218,  82, 58, 252, 177,  52, 186, 123, 120,  64, 242, 133, 143, 161, 121, 179]
+zzc_tailMap = [16,  1, 32, 12, 19, 27,  8,  5]
+
+
+def createMD5(s: str):
+    return md5(s.encode("utf-8")).hexdigest()
 
 
 def v(b):
@@ -99,3 +109,23 @@ def sign(params):
     r = _re.compile(r'[\\/+]')
     res = _re.sub(r, '', res)
     return res
+
+
+def sign_zzc(data):
+    hexsha1 = sha1(data.encode()).hexdigest()
+    middle = []
+    for i in range(0, 20):
+        middle.append(int(hexsha1[2 * i] + hexsha1[2 * i + 1], 16))
+    middle = list(map(lambda x, y: x ^ y, middle, zzc_middleMap))
+    _sign = base64.b64encode(bytearray(middle))
+    _sign = _re.sub(r'[+/=]', '', _sign.decode())
+    _sign = 'zzc' + ''.join(hexsha1[x] for x in zzc_headMap) + _sign + ''.join(hexsha1[x] for x in zzc_tailMap)
+    return _sign.lower()
+
+
+def aes_decrypt(base64_text, key, iv):
+    aes = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
+    decrypted_text = aes.decrypt(base64.b64decode(base64_text))
+    padding_length = decrypted_text[-1]
+    decrypted_text = decrypted_text[:-padding_length]
+    return decrypted_text.decode('utf-8')

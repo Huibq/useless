@@ -1,13 +1,15 @@
-import json, os
+import json
 import requests
-from modules.qqsign import sign
+from modules.qqsign import sign_zzc
+
+session = requests.Session()
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0'
+}
+session.headers.update(headers)
 
 
 def signRequest(data):
     data = json.dumps(data)
-    s = sign(data)
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0',
-        'X-Forwarded-For': '116.169.6.136'
-    }
-    return requests.post('https://u.y.qq.com/cgi-bin/musics.fcg?format=json&sign=' + s, data=data, headers=headers)
+    s = sign_zzc(data)
+    return session.post('https://u6.y.qq.com/cgi-bin/musics.fcg?format=json&sign=' + s, data=data, headers=headers)
