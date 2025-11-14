@@ -4,7 +4,7 @@ from utils.util import ad
 key = os.environ['key']
 iv = os.environ['iv']
 
-remain_users = []
+remain_users = []  # 保留的uin
 remove_users = []
 old_home_path = "./utils/secret3.json"
 new_home_path = "./utils/secret.json"
