@@ -13,14 +13,14 @@ with open("./utils/secret.json", "r", encoding='utf-8') as f:
 
 
 def doJob(user):
-    if txt[user]['tab'] == 'qq':
+    if txt[user]['tab'] == 'kg':
         try:
-            txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
+            txt[user]['qqmusic_key'] = ae(kg.refresh_token(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
         except Exception as e:
             print(f'{user}：出错！！')
     else:
         try:
-            txt[user]['qqmusic_key'] = ae(kg.refresh_token(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
+            txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
         except Exception as e:
             print(f'{user}：出错！！')
 
