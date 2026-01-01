@@ -35,6 +35,7 @@ def refresh(loginuin, qqmusic_key):
             }
         }
         req = signRequest(options["body"])
+        # print(req.text)
         body = req.json()
         if body['req1']['code'] != 0:
             print('失败, code: ' +
@@ -61,6 +62,7 @@ def refresh(loginuin, qqmusic_key):
             }
         }
         req = signRequest(options['body'])
+        # print(req.text)
         body = req.json()
         if body['req1']['code'] != 0:
             print('失败, code: ' +
