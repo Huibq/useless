@@ -18,7 +18,7 @@ while True:
             for i in txt:
                 if txt[i]['loginuin'] == en_User:
                     Type = True
-                    if secrte_path == './utils/secret2.json' or secrte_path == './utils/secret3':
+                    if secrte_path == './utils/secret2.json' or secrte_path == './utils/secret3.json':
                         Continue = input('是否继续替换，1是2否:')
                         if Continue == '2':
                             break
