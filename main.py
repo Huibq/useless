@@ -20,7 +20,7 @@ def doJob(user):
             print(f'{user}：出错！！')
     else:
         try:
-            txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv)), key, iv)
+            txt[user]['qqmusic_key'] = ae(tx.refresh(str(ad(txt[user]['loginuin'], key, iv)), ad(txt[user]['qqmusic_key'], key, iv), False), key, iv)
         except Exception as e:
             print(f'{user}：出错！！')
 

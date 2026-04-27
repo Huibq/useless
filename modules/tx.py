@@ -2,7 +2,7 @@ from utils.Http import signRequest
 from utils.util import push
 
 
-def refresh(loginuin, qqmusic_key):
+def refresh(loginuin, qqmusic_key, needpush=True):
     if qqmusic_key.startswith('W_X'):
         options = {
             'method': 'POST',
@@ -38,9 +38,9 @@ def refresh(loginuin, qqmusic_key):
         # print(req.text)
         body = req.json()
         if body['req1']['code'] != 0:
-            print('失败, code: ' +
-                  str(body['req1']['code']) + f'\n响应体: {body}')
-            push(loginuin, '企鹅刷新失败')
+            print('失败, code: ' + str(body['req1']['code']) + f'\n响应体: {body}')
+            if needpush:
+                push(loginuin, '企鹅刷新失败')
             return None
         else:
             print('成功')
@@ -65,9 +65,9 @@ def refresh(loginuin, qqmusic_key):
         # print(req.text)
         body = req.json()
         if body['req1']['code'] != 0:
-            print('失败, code: ' +
-                  str(body['req1']['code']) + f'\n响应体: {body}')
-            push(loginuin, '企鹅刷新失败')
+            print('失败, code: ' + str(body['req1']['code']) + f'\n响应体: {body}')
+            if needpush:
+                push(loginuin, '企鹅刷新失败')
             return None
         else:
             print('成功')
