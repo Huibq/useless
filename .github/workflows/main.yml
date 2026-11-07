@@ -26,8 +26,6 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/run_in_Actions/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    - name: 设置时区
-      run: sudo timedatectl set-timezone 'Asia/Shanghai'
     - name: 安装依赖
       run: |
         pip install -r ./utils/requirements.txt
@@ -37,8 +35,11 @@ jobs:
         iv: ${{secrets.iv}}
         token: ${{secrets.token}}
       run: |
-        python main.py
-        python main2.py
+        python -u main.py
+        echo "main.py done"
+        python -u main2.py
+        echo "main2.py done"
+        ps -ef
     - name: Commit
       run: |
         git config --global user.name "GitHub Actions"
